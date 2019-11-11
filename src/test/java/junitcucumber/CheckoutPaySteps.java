@@ -23,8 +23,6 @@ public class CheckoutPaySteps {
 
 	WebDriver driver;			
 
-
-
 	@Given("^I launch the chrome browser$")
 	public void i_launch_the_chrome_browser() throws Throwable {
 		Properties obj = new Properties();
@@ -36,19 +34,18 @@ public class CheckoutPaySteps {
 		driver= new ChromeDriver();					
 		driver.manage().window().maximize();			
 		driver.get("http://ae.com");	
-		System.out.println("Test1");
+		System.out.println("AE Test");
 		Thread.sleep(3000);
 	}
 
 	//This test will run for three different use cases i.e three different card types
 	@When("^I Launch AE, select the item, checkout and execute the pay with card details \"([^\"]*)\" , \"([^\"]*)\" , \"([^\"]*)\"$")
 	public void i_Launch_AE_select_the_item_checkout_and_execute_the_pay_with_card_details(String card, String exp, String cvv) throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
 
 		Properties obj = new Properties();
 		FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")+"/ObjectRepo.properties");
 		obj.load(objfile);
-		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");	
+		System.setProperty("webdriver.chrome.driver", "/junitcucumber/chromedriver");	
 
 		WebDriverWait wait = new WebDriverWait(driver,30);
 

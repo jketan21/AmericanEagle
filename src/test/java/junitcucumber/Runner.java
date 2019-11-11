@@ -22,18 +22,16 @@ import cucumber.api.junit.Cucumber;
 public class Runner 
 {		
 
-	
-	
 	private TestNGCucumberRunner testNGCucumberRunner;
-	
-	
+
+
 	// Create Properties class object to read properties file
 	@BeforeClass(alwaysRun = true)
-    public void setUpClass() throws Exception {
-        testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
-    }
-	
-	
+	public void setUpClass() throws Exception {
+		testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
+	}
+
+
 	@Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
 	public void feature(CucumberFeatureWrapper cucumberFeature) {
 		testNGCucumberRunner.runCucumber(cucumberFeature.getCucumberFeature());
@@ -43,11 +41,11 @@ public class Runner
 	public Object[][] features() {
 		return testNGCucumberRunner.provideFeatures();
 	}
-	
-	 @AfterClass(alwaysRun = true)
-	    public void tearDownClass() throws Exception {
-	        testNGCucumberRunner.finish();
-	    }
+
+	@AfterClass(alwaysRun = true)
+	public void tearDownClass() throws Exception {
+		testNGCucumberRunner.finish();
+	}
 
 }
 
