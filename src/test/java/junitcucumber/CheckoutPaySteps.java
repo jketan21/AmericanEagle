@@ -40,7 +40,7 @@ public class CheckoutPaySteps {
 		Thread.sleep(3000);
 	}
 
-
+	//This test will run for three different use cases i.e three different card types
 	@When("^I Launch AE, select the item, checkout and execute the pay with card details \"([^\"]*)\" , \"([^\"]*)\" , \"([^\"]*)\"$")
 	public void i_Launch_AE_select_the_item_checkout_and_execute_the_pay_with_card_details(String card, String exp, String cvv) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
@@ -52,26 +52,20 @@ public class CheckoutPaySteps {
 
 		WebDriverWait wait = new WebDriverWait(driver,30);
 
-
-
-
-
 		driver.findElement(By.xpath(obj.getProperty("close"))).click();
 
 		driver.findElement(By.xpath(obj.getProperty("shopmen"))).click();
 
-		Thread.sleep(2000);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("tops"))));
 
 		driver.findElement(By.xpath(obj.getProperty("tops"))).click();
 
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("selectitem"))));
 
-
 		driver.findElement(By.xpath(obj.getProperty("selectitem"))).click();
 
-
-
-		driver.findElement(By.cssSelector(obj.getProperty("sizedropdown"))).click();
+		driver.findElement(By.xpath(obj.getProperty("sizedropdown"))).click();
+		Thread.sleep(1000);
 		driver.findElement(By.xpath(obj.getProperty("selectsize"))).click();
 		driver.findElement(By.xpath(obj.getProperty("addtobag"))).click();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(obj.getProperty("viewbag"))));
